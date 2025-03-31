@@ -3,7 +3,7 @@ import { Header } from "../header/Header";
 
 export const Layout = ({ children }) => {
   return (
-    <div>
+    <div className="h-screen">
       <Header />
       <div>{children}</div>
     </div>
