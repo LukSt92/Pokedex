@@ -1,5 +1,12 @@
+import { Outlet } from "react-router-dom";
+import { Layout } from "./subpages/layout/Layout";
+
 function App() {
-  return <></>;
+  return (
+    <Layout>
+      <Outlet />
+    </Layout>
+  );
 }
 
 export default App;

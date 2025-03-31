@@ -1,17 +1,26 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+
+const routes = [
+  { name: "Home", id: 1, path: "/" },
+  { name: "Arena", id: 2, path: "arena" },
+];
 
 export const Header = () => {
   return (
     <div>
-      <img src="https://pl.wikipedia.org/wiki/Pok%C3%A9mon#/media/Plik:International_Pok%C3%A9mon_logo.svg" />
+      <img src={"../../../International_Pokémon_logo.svg"}></img>
       <div>
         <div>
           <h4>UserName TODO</h4>
           <h4>Switch L/D</h4>
         </div>
         <div>
-          <button>Naw1</button>
-          <button>Nav2 etc.</button>
+          {routes.map(({ name, id, path }) => (
+            <NavLink key={id} to={path}>
+              <button>{name}</button>
+            </NavLink>
+          ))}
         </div>
       </div>
     </div>
