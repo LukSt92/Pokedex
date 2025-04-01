@@ -1,45 +1,51 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
 
 const TOGGLE_CLASSES =
   "text-sm font-medium flex items-center gap-2 px-3 md:pl-3 md:pr-3.5 py-3 md:py-1.5 transition-colors relative z-10";
 
 export const ThemeSwitch = () => {
-  const [selected, setSelected] = useState("light");
-  const handleClick = (theme) => {
-    document.body.classList.remove(selected);
-    setSelected(theme);
-    document.body.classList.add(theme);
+  // const [selected, setSelected] = useState("light");
+  // const handleClick = (theme) => {
+  //   document.body.classList.remove(selected);
+  //   setSelected(theme);
+  //   document.body.classList.add(theme);
+  // };
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (darkMode) document.documentElement.classList.add("dark");
+    else document.documentElement.classList.remove("dark");
+  }, [darkMode]);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
   };
 
   return (
     <div className="relative flex w-fit items-center rounded-full">
       <button
         className={`${TOGGLE_CLASSES} ${
-          selected === "light" ? "text-white" : "text-slate-300"
+          darkMode ? "text-slate-300" : "text-white"
         }`}
-        onClick={() => {
-          handleClick("light");
-        }}
+        onClick={toggleDarkMode}
       >
         <FiMoon className="relative z-10 text-lg md:text-sm" />
         <span className="relative z-10">Light</span>
       </button>
       <button
         className={`${TOGGLE_CLASSES} ${
-          selected === "dark" ? "text-white" : "text-slate-800"
+          darkMode ? "text-white" : "text-slate-800"
         }`}
-        onClick={() => {
-          handleClick("dark");
-        }}
+        onClick={toggleDarkMode}
       >
         <FiSun className="relative z-10 text-lg md:text-sm" />
         <span className="relative z-10">Dark</span>
       </button>
       <div
         className={`absolute inset-0 z-0 flex ${
-          selected === "dark" ? "justify-end" : "justify-start"
+          darkMode ? "justify-end" : "justify-start"
         }`}
       >
         <motion.span

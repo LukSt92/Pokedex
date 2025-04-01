@@ -1,6 +1,19 @@
 @import "tailwindcss";
 
-:root {
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-bgPrimColor: #ffffff;
+  --color-ftPrimColor: #0f0f0f;
+}
+
+@layer theme {
+  .dark {
+    --color-bgPrimColor: #0f0f0f;
+    --color-ftPrimColor: #ffffff;
+  }
+}
+/* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -40,4 +53,4 @@ h1 {
 .dark {
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-}
+} */
