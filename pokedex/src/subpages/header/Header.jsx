@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { ThemeSwitch } from "./ThemeSwitch";
+import { Button } from "../../shared/Button";
 
 const routes = [
   { name: "Favourites", id: 1, path: "favourites" },
@@ -25,9 +26,7 @@ export const Header = () => {
         <div className="flex justify-stretch">
           {routes.map(({ name, id, path }) => (
             <Link key={id} to={path}>
-              <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">
-                {name}
-              </button>
+              <Button>{name}</Button>
             </Link>
           ))}
         </div>

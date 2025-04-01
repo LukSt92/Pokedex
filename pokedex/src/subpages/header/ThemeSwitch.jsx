@@ -6,12 +6,6 @@ const TOGGLE_CLASSES =
   "text-sm font-medium flex items-center gap-2 px-3 md:pl-3 md:pr-3.5 py-3 md:py-1.5 transition-colors relative z-10";
 
 export const ThemeSwitch = () => {
-  // const [selected, setSelected] = useState("light");
-  // const handleClick = (theme) => {
-  //   document.body.classList.remove(selected);
-  //   setSelected(theme);
-  //   document.body.classList.add(theme);
-  // };
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
