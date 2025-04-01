@@ -15,7 +15,7 @@ const routes = [
 export const Header = () => {
   return (
     <div className="flex w-screen p-8 border-b-4 border-indigo-500">
-      <Link to={"/"}>
+      <Link to={"/"} className="shrink-0">
         <img src={"../../../International_Pokémon_logo.svg"}></img>
       </Link>
       <div className="flex flex-col items-end grow gap-4">
@@ -23,7 +23,7 @@ export const Header = () => {
           <h4>UserName TODO</h4>
           <ThemeSwitch />
         </div>
-        <div className="flex justify-stretch">
+        <div className="flex flex-wrap">
           {routes.map(({ name, id, path }) => (
             <Link key={id} to={path}>
               <Button>{name}</Button>
