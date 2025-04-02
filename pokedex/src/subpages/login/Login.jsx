@@ -1,5 +1,10 @@
 import React from "react";
+import { Title } from "../../shared/Title";
 
 export const Login = () => {
-  return <div>Login</div>;
+  return (
+    <>
+      <Title>Login</Title>
+    </>
+  );
 };
