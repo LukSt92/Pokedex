@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "../../shared/Button";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
@@ -40,11 +40,15 @@ export const Register = () => {
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
   } = useForm({ resolver: zodResolver(registerSchema), defaultValues: {} });
 
-  const onSubmit = (data) => createNewUser(data);
+  const onSubmit = (data) => {
+    if (allUsersData.some((user) => user.userName === data.username))
+      console.log("test");
+    //TODO ADD NOTISTACK!!
+    else createNewUser(data);
+  };
 
   async function createNewUser(data) {
     axios
@@ -61,6 +65,18 @@ export const Register = () => {
         console.log(error);
       });
   }
+  useEffect(() => {
+    async function getAllUsers() {
+      try {
+        const response = await axios.get(baseUrl);
+        setAllUsersData(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getAllUsers();
+  }, []);
+  const [allUsersData, setAllUsersData] = useState([]);
 
   return (
     <>

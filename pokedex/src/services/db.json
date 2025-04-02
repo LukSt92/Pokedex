@@ -11,6 +11,18 @@
       "email": "test@o2.pl",
       "password": "1!ASDasd",
       "id": 2
+    },
+    {
+      "userName": "asdasd",
+      "email": "asdasd@o2.pl",
+      "password": "1!ASDasd",
+      "id": 3
+    },
+    {
+      "userName": "asdasd",
+      "email": "test@o2.pl",
+      "password": "1!ASDasd",
+      "id": 4
     }
   ]
 }
