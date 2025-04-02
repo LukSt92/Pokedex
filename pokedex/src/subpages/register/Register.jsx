@@ -1,16 +1,14 @@
 import { Button } from "../../shared/Button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { registerSchema } from "../../services/registerSchema";
+import { registerSchema } from "../../services/schema";
 import { useGetAllUsersData } from "../../hooks/useGetAllUsersData";
 import { createNewUser } from "./createNewUser";
-import { RegisterInput } from "./RegisterInput";
+import { InputGroup } from "../../shared/InputGroup";
 import { Title } from "../../shared/Title";
 
-const usersUrl = "users";
-
 export const Register = () => {
-  const { allUsersData } = useGetAllUsersData(usersUrl);
+  const { allUsersData } = useGetAllUsersData("users");
   const {
     register,
     handleSubmit,
@@ -29,25 +27,25 @@ export const Register = () => {
     <>
       <Title>Create new account</Title>
       <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto">
-        <RegisterInput
+        <InputGroup
           register={register}
           type={"text"}
           name={"username"}
           errors={errors.username}
         />
-        <RegisterInput
+        <InputGroup
           register={register}
           type={"email"}
           name={"email"}
           errors={errors.email}
         />
-        <RegisterInput
+        <InputGroup
           register={register}
           type={"password"}
           name={"password"}
           errors={errors.password}
         />
-        <RegisterInput
+        <InputGroup
           register={register}
           type={"password"}
           name={"confirm"}

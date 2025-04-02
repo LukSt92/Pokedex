@@ -9,6 +9,7 @@ import { Favourites } from "./subpages/favourites/Favourites.jsx";
 import { Login } from "./subpages/login/Login.jsx";
 import { Register } from "./subpages/register/Register.jsx";
 import { Ranking } from "./subpages/ranking/Ranking.jsx";
+import { LoginProvider } from "./context/LoginContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,5 +28,7 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <LoginProvider>
+    <RouterProvider router={router} />
+  </LoginProvider>
 );

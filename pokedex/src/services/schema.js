@@ -16,9 +16,14 @@ export const registerSchema = z
             "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, 1 special character and be at least 8 characters long.",
         }
       ),
-    confirm: z.string(),
+    confirm: z.string().min(1, { message: "This field is required." }),
   })
   .refine((userData) => userData.password === userData.confirm, {
     message: "Passwords do not match.",
     path: ["confirm"],
   });
+
+export const loginSchema = z.object({
+  username: z.string().min(1, { message: "This field is required." }),
+  password: z.string().min(1, { message: "This field is required." }),
+});
