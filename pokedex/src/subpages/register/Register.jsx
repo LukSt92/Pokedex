@@ -3,6 +3,31 @@ import { Button } from "../../shared/Button";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import axios from "axios";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+
+const registerSchema = z
+  .object({
+    username: z
+      .string()
+      .min(3, { message: "Name must be at least 3 characters long." }),
+    email: z.string().email({ message: "Incorrect email address." }),
+    password: z
+      .string()
+      .min(8, { message: "Password must be at least 8 characters long." })
+      .regex(
+        /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
+        {
+          message:
+            "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, 1 special character and be at least 8 characters long.",
+        }
+      ),
+    confirmPassword: z.string(),
+  })
+  .refine((userData) => userData.password === userData.confirmPassword, {
+    message: "Passwords do not match.",
+    path: ["confirmPassword"],
+  });
 
 const baseUrl = "http://localhost:3000/users";
 
@@ -17,7 +42,7 @@ export const Register = () => {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm();
+  } = useForm({ resolver: zodResolver(registerSchema), defaultValues: {} });
 
   const onSubmit = (data) => createNewUser(data);
 
@@ -49,6 +74,7 @@ export const Register = () => {
             placeholder=" "
           />
           <label className={labelClass}>Username</label>
+          {errors?.username && <p>{errors.username.message}</p>}
         </div>
         <div className="relative z-0 w-full mb-5 group">
           <input
@@ -58,24 +84,27 @@ export const Register = () => {
             placeholder=" "
           />
           <label className={labelClass}>Email address</label>
+          {errors?.email && <p>{errors.email.message}</p>}
         </div>
         <div className="relative z-0 w-full mb-5 group">
           <input
             {...register("password")}
-            type="text"
+            type="password"
             className={inputClass}
             placeholder=" "
           />
           <label className={labelClass}>Password</label>
+          {errors?.password && <p>{errors.password.message}</p>}
         </div>
         <div className="relative z-0 w-full mb-5 group">
           <input
             {...register("confirmPassword")}
-            type="text"
+            type="password"
             className={inputClass}
             placeholder=" "
           />
           <label className={labelClass}>Confirm password</label>
+          {errors?.confirmPassword && <p>{errors.confirmPassword.message}</p>}
         </div>
         <div className="justify-self-center">
           <Button type="submit">Create</Button>
