@@ -5,6 +5,7 @@ import { registerSchema } from "../../services/registerSchema";
 import { useGetAllUsersData } from "../../hooks/useGetAllUsersData";
 import { createNewUser } from "./createNewUser";
 import { RegisterInput } from "./RegisterInput";
+import { Title } from "../../shared/Title";
 
 const usersUrl = "users";
 
@@ -26,7 +27,7 @@ export const Register = () => {
 
   return (
     <>
-      <p className="text-4xl font-bold">Create new account</p>
+      <Title>Create new account</Title>
       <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto">
         <RegisterInput
           register={register}
