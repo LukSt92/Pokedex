@@ -17,6 +17,12 @@
       "email": "test@o2.pl",
       "password": "aA123123!",
       "id": 3
+    },
+    {
+      "userName": "test21",
+      "email": "test@o2.pl",
+      "password": "aA123123!",
+      "id": 4
     }
   ]
 }

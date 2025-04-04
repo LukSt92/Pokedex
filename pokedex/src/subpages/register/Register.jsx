@@ -2,14 +2,16 @@ import { Button } from "../../shared/Button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "../../services/schema";
-import { useGetAllUsersData } from "../../hooks/useGetAllUsersData";
+import { useGetData } from "../../hooks/useGetData";
 import { createNewUser } from "./createNewUser";
 import { InputGroup } from "../../shared/InputGroup";
 import { Title } from "../../shared/Title";
 import { useNotification } from "../../hooks/useNotification";
 
+const url = "http://localhost:3000/users/";
+
 export const Register = () => {
-  const { allUsersData } = useGetAllUsersData("users");
+  const { data } = useGetData(url);
   const { toggleNotification } = useNotification();
   const {
     register,
@@ -18,15 +20,14 @@ export const Register = () => {
     formState: { errors },
   } = useForm({ resolver: zodResolver(registerSchema), defaultValues: {} });
 
-  const onSubmit = (data) => {
-    console.log(allUsersData);
-    if (allUsersData.some((user) => user.userName === data.username))
+  const onSubmit = (dataOnSubmit) => {
+    if (data.some((user) => user.userName === dataOnSubmit.username))
       toggleNotification(
         "This username is already taken, please enter another one.",
         "warning"
       );
     else {
-      createNewUser(data);
+      createNewUser(dataOnSubmit);
       reset();
       toggleNotification(
         "Your account has been created, now you can log in",
