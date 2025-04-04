@@ -18,6 +18,7 @@ const routes = {
 };
 export const Header = () => {
   const { isLoggedIn, setLoggedIn } = useContext(LoginContext);
+  const userName = localStorage.getItem("userName");
 
   return (
     <div className="flex w-screen p-8 border-b-4 border-indigo-500">
@@ -26,7 +27,7 @@ export const Header = () => {
       </Link>
       <div className="flex flex-col items-end grow gap-4">
         <div className="flex items-center gap-2">
-          <h4>UserName TODO</h4>
+          {isLoggedIn && <h4 className="font-bold">{userName}</h4>}
           <ThemeSwitch />
         </div>
         <div className="flex flex-wrap">

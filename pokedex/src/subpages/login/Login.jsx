@@ -8,8 +8,10 @@ import { useGetAllUsersData } from "../../hooks/useGetAllUsersData";
 import { useContext } from "react";
 import { LoginContext } from "../../context/LoginContext";
 import { useNavigate } from "react-router-dom";
+import { useNotification } from "../../hooks/useNotification";
 
 export const Login = () => {
+  const { toggleNotification } = useNotification();
   const { setLoggedIn } = useContext(LoginContext);
   const { allUsersData } = useGetAllUsersData("users");
   const navigate = useNavigate();
@@ -25,12 +27,12 @@ export const Login = () => {
         user.userName === data.username && user.password === data.password
     );
     if (validate) {
+      localStorage.setItem("userName", data.username);
+      toggleNotification(`Welcome ${data.username}`, "success");
       setLoggedIn(true);
       navigate("/");
-    } else {
-      console.log("fail");
-      //TODO NOTISTACK
-    }
+    } else
+      toggleNotification("Invalid login details, please try again.", "error");
   };
 
   return (

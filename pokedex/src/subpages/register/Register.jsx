@@ -6,9 +6,11 @@ import { useGetAllUsersData } from "../../hooks/useGetAllUsersData";
 import { createNewUser } from "./createNewUser";
 import { InputGroup } from "../../shared/InputGroup";
 import { Title } from "../../shared/Title";
+import { useNotification } from "../../hooks/useNotification";
 
 export const Register = () => {
   const { allUsersData } = useGetAllUsersData("users");
+  const { toggleNotification } = useNotification();
   const {
     register,
     handleSubmit,
@@ -18,9 +20,17 @@ export const Register = () => {
   const onSubmit = (data) => {
     console.log(allUsersData);
     if (allUsersData.some((user) => user.userName === data.username))
-      console.log("test");
-    //TODO ADD NOTISTACK!!
-    else createNewUser(data);
+      toggleNotification(
+        "This username is already taken, please enter another one.",
+        "warning"
+      );
+    else {
+      createNewUser(data);
+      toggleNotification(
+        "Your account has been created, now you can log in",
+        "success"
+      );
+    }
   };
 
   return (

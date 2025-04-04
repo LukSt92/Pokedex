@@ -10,6 +10,7 @@ import { Login } from "./subpages/login/Login.jsx";
 import { Register } from "./subpages/register/Register.jsx";
 import { Ranking } from "./subpages/ranking/Ranking.jsx";
 import { LoginProvider } from "./context/LoginContext.jsx";
+import { SnackbarProvider } from "notistack";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,9 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <LoginProvider>
-    <RouterProvider router={router} />
-  </LoginProvider>
+  <SnackbarProvider autoHideDuration={2000}>
+    <LoginProvider>
+      <RouterProvider router={router} />
+    </LoginProvider>
+  </SnackbarProvider>
 );

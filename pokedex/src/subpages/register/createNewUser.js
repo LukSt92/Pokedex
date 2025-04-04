@@ -10,10 +10,6 @@ export const createNewUser = async (data) => {
       email: data.email,
       password: data.password,
     })
-    .then(function (response) {
-      console.log(response);
-      //ADD NOTISTACK INFO HERE OR ADD FINALLY!!!
-    })
     .catch(function (error) {
       console.log(error);
     });

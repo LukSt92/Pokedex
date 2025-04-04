@@ -15,7 +15,7 @@ export const useGetAllUsersData = (addUrl) => {
       }
     }
     getAllUsers();
-  }, [addUrl]);
+  }, []);
 
   return { allUsersData };
 };

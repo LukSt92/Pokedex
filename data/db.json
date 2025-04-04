@@ -5,6 +5,12 @@
       "email": "test@o2.pl",
       "password": "123123",
       "id": 1
+    },
+    {
+      "userName": "asdasd",
+      "email": "test@o2.pl",
+      "password": "aA123123!",
+      "id": 2
     }
   ]
 }
