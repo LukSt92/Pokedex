@@ -30,7 +30,7 @@ export const Header = () => {
           {isLoggedIn && <h4 className="font-bold">{userName}</h4>}
           <ThemeSwitch />
         </div>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap gap-2 justify-end">
           {routes.basics.map(({ name, id, path }) => (
             <Link key={id} to={path}>
               <Button>{name}</Button>

@@ -4,18 +4,16 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "../../services/schema";
 import { InputGroup } from "../../shared/InputGroup";
-import { useGetData } from "../../hooks/useGetData";
+import { useUsersData } from "../../hooks/useUsersData";
 import { useContext } from "react";
 import { LoginContext } from "../../context/LoginContext";
 import { useNavigate } from "react-router-dom";
 import { useNotification } from "../../hooks/useNotification";
 
-const url = "http://localhost:3000/users/";
-
 export const Login = () => {
   const { toggleNotification } = useNotification();
   const { setLoggedIn } = useContext(LoginContext);
-  const { data } = useGetData(url);
+  const { usersData } = useUsersData();
   const navigate = useNavigate();
   const {
     register,
@@ -23,15 +21,14 @@ export const Login = () => {
     formState: { errors },
   } = useForm({ resolver: zodResolver(loginSchema), defaultValues: {} });
 
-  const onSubmit = (dataOnSubmit) => {
-    const validate = data.find(
+  const onSubmit = (data) => {
+    const validate = usersData.find(
       (user) =>
-        user.userName === dataOnSubmit.username &&
-        user.password === dataOnSubmit.password
+        user.userName === data.username && user.password === data.password
     );
     if (validate) {
-      localStorage.setItem("userName", dataOnSubmit.username);
-      toggleNotification(`Welcome ${dataOnSubmit.username}`, "success");
+      localStorage.setItem("userName", data.username);
+      toggleNotification(`Welcome ${data.username}`, "success");
       setLoggedIn(true);
       navigate("/");
     } else
