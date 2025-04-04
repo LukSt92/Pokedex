@@ -11,6 +11,12 @@
       "email": "test@o2.pl",
       "password": "aA123123!",
       "id": 2
+    },
+    {
+      "userName": "bdsfds",
+      "email": "test@o2.pl",
+      "password": "aA123123!",
+      "id": 3
     }
   ]
 }

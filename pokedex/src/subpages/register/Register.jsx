@@ -14,6 +14,7 @@ export const Register = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({ resolver: zodResolver(registerSchema), defaultValues: {} });
 
@@ -26,6 +27,7 @@ export const Register = () => {
       );
     else {
       createNewUser(data);
+      reset();
       toggleNotification(
         "Your account has been created, now you can log in",
         "success"
