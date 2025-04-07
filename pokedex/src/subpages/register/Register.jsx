@@ -2,14 +2,16 @@ import { Button } from "../../shared/Button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "../../services/schema";
-import { useUsersData } from "../../hooks/useUsersData";
 import { createNewUser } from "./createNewUser";
 import { InputGroup } from "../../shared/InputGroup";
 import { Title } from "../../shared/Title";
 import { useNotification } from "../../hooks/useNotification";
+import { useGetData } from "../../hooks/useGetData";
+
+const url = "http://localhost:3000/users/";
 
 export const Register = () => {
-  const { usersData } = useUsersData();
+  const { data: usersData } = useGetData(url);
   const { toggleNotification } = useNotification();
   const {
     register,

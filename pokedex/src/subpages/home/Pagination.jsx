@@ -2,17 +2,15 @@ import React from "react";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { Button } from "../../shared/Button";
 
-export const Pagination = ({ page, maxPage, setPage, handleChangePage }) => {
+export const Pagination = ({ page, maxPage, setPage }) => {
   const handleClick = (variant) => {
     if (variant === "next") {
       if (page === maxPage) return;
       setPage((prev) => prev + 1);
-      handleChangePage();
     }
     if (variant === "prev") {
       if (page === 1) return;
       setPage((prev) => prev - 1);
-      handleChangePage();
     }
   };
 

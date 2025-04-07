@@ -4,16 +4,18 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "../../services/schema";
 import { InputGroup } from "../../shared/InputGroup";
-import { useUsersData } from "../../hooks/useUsersData";
 import { useContext } from "react";
 import { LoginContext } from "../../context/LoginContext";
 import { useNavigate } from "react-router-dom";
 import { useNotification } from "../../hooks/useNotification";
+import { useGetData } from "../../hooks/useGetData";
+
+const url = "http://localhost:3000/users/";
 
 export const Login = () => {
   const { toggleNotification } = useNotification();
   const { setLoggedIn } = useContext(LoginContext);
-  const { usersData } = useUsersData();
+  const { data: usersData } = useGetData(url);
   const navigate = useNavigate();
   const {
     register,
