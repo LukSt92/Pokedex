@@ -19,7 +19,7 @@ export const PokeCard = ({ url }) => {
       ability: data?.abilities[0].ability.name,
     },
   };
-  const handleClick = () => navigate(`/${details.id}`);
+  const handleClick = () => navigate(`/summary/${details.id}`);
 
   const statsInfo = Object.entries(details?.stats).map(([key, value]) => (
     <div key={key} className="w-1/2 flex flex-col items-center p-2">

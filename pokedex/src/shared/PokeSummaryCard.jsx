@@ -1,16 +1,18 @@
 import React from "react";
 import { capitalizeFirstLetter } from "../utilis/capitalizeFirstLetter";
 import { splitWords } from "../utilis/splitWords";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { GiCrossedSwords } from "react-icons/gi";
 import { GoHeart, GoHeartFill } from "react-icons/go";
 import { useGetData } from "../hooks/useGetData";
 
 const url = "https://pokeapi.co/api/v2/pokemon/";
+const baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=150";
 
 export const PokeSummaryCard = () => {
   const { id } = useParams();
-  const { data, isLoading } = useGetData(`${url}${id}`);
+  const { data } = useGetData(`${url}${id}`);
+  const { data: Pokedb } = useGetData(baseUrl);
   const details = {
     id: data?.id,
     name: data?.name,
@@ -22,6 +24,13 @@ export const PokeSummaryCard = () => {
       ability: data?.abilities[0].ability.name,
     },
   };
+  const validation = Pokedb?.results.some((pokemon) =>
+    pokemon.name.includes(details.name)
+  );
+
+  if (!validation) {
+    return <p> This id does not exist in the database.</p>;
+  }
 
   const statsInfo = Object.entries(details?.stats).map(([key, value]) => (
     <div key={key} className="w-1/2 flex flex-col items-center p-2">
@@ -32,12 +41,12 @@ export const PokeSummaryCard = () => {
     </div>
   ));
 
-  return details ? (
+  return (
     <div className="w-full border border-gray-200 rounded-lg flex items-center justify-between p-2 gap-8 bg-gradient-to-r from-neutral-100 to-stone-200 shadow-xl">
       <div className="flex flex-col gap-4">
         <img src={details.imgUrl} alt={details.name} className="size-48" />
         <div className="flex justify-between">
-          <GiCrossedSwords size={36} />
+          <GiCrossedSwords size={36} onClick={() => console.log(Pokedb)} />
           {details.isFavourite ? (
             <GoHeartFill size={36} color="red" />
           ) : (
@@ -52,10 +61,5 @@ export const PokeSummaryCard = () => {
         <div className="flex flex-wrap">{statsInfo}</div>
       </div>
     </div>
-  ) : (
-    <p>
-      Pokemon data did not load, you have to click directly on PokeCard to open
-      Summary.
-    </p>
   );
 };
