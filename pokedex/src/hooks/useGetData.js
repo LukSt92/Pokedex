@@ -1,9 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useGetData = (url) => {
   const [data, setData] = useState();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
@@ -19,5 +19,5 @@ export const useGetData = (url) => {
     };
     getData();
   }, [url]);
-  return { data, isLoading, setData };
+  return { data, isLoading };
 };

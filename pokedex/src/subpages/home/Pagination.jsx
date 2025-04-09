@@ -21,7 +21,7 @@ export const Pagination = ({ page, maxPage, setPage }) => {
       </Button>
       <p>
         Page <strong>{page}</strong> of&nbsp;
-        <strong>{maxPage}</strong>
+        <strong>{maxPage.toString()}</strong>
       </p>
       <Button onClick={() => handleClick("next")}>
         <FiArrowRight className=" text-xl md:text-lg" />

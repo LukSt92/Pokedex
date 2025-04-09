@@ -2,18 +2,25 @@ import React, { useState } from "react";
 import { Pagination } from "./Pagination";
 import { PokeCard } from "../../shared/PokeCard";
 import { Title } from "../../shared/Title";
-import { useFilterAndSetPokemons } from "./useFilterAndSetPokemons";
+import { useGetData } from "../../hooks/useGetData";
+
+const url = "https://pokeapi.co/api/v2/pokemon?limit=150";
 
 export const Home = () => {
+  const [searchValue, setSearchValue] = useState("");
+  const { data, isLoading } = useGetData(url);
   const [page, setPage] = useState(1);
-  const { pokeData, isLoading, maxPage, searchValue, setSearchValue } =
-    useFilterAndSetPokemons(page);
 
   const handleInputChange = (e) => {
-    e.preventDefault();
     setPage(1);
     setSearchValue(e.target.value);
   };
+
+  const filteredPokemons = data?.results.filter((pokemon) =>
+    pokemon.name.includes(searchValue)
+  );
+  const pokeData = filteredPokemons?.slice((page - 1) * 15, 15 * page);
+  const maxPage = Math.ceil(filteredPokemons?.length / 15);
 
   return (
     <>
