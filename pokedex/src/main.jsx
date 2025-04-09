@@ -11,19 +11,24 @@ import { Register } from "./subpages/register/Register.jsx";
 import { Ranking } from "./subpages/ranking/Ranking.jsx";
 import { LoginProvider } from "./context/LoginContext.jsx";
 import { SnackbarProvider } from "notistack";
+import { PokeSummaryCard } from "./shared/PokeSummaryCard.jsx";
 
 const router = createBrowserRouter([
   {
     element: <App />,
     path: "/",
     children: [
-      { element: <Home />, path: "/" },
+      {
+        element: <Home />,
+        path: "/",
+      },
       { element: <Arena />, path: "/arena" },
       { element: <Edit />, path: "/edit" },
       { element: <Favourites />, path: "/favourites" },
       { element: <Ranking />, path: "/ranking" },
       { element: <Login />, path: "/login" },
       { element: <Register />, path: "/register" },
+      { element: <PokeSummaryCard />, path: ":id" },
     ],
   },
 ]);
