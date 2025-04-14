@@ -7,10 +7,13 @@ import { useGetData } from "../hooks/useGetData";
 import { useGetPokemonDetails } from "../hooks/useGetPokemonDetails";
 import { requestFavouriteToJson } from "../services/requestFavouriteToJson";
 import { useCheckIsFavourite } from "../hooks/useCheckIsFavourite";
+import { useContext } from "react";
+import { LoginContext } from "../context/LoginContext";
 
 const baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=150";
 
 export const PokeSummaryCard = () => {
+  const { isLoggedIn } = useContext(LoginContext);
   const { name } = useParams();
   const { pokeDetails, isLoading } = useGetPokemonDetails(name);
   const { data: Pokedb } = useGetData(baseUrl);
@@ -54,14 +57,16 @@ export const PokeSummaryCard = () => {
           alt={pokeDetails.name}
           className="size-48"
         />
-        <div className="flex justify-between">
-          <GiCrossedSwords size={36} />
-          <GoHeartFill
-            size={36}
-            color={isFavourite ? "red" : "black"}
-            onClick={handleClick}
-          />
-        </div>
+        {isLoggedIn && (
+          <div className="flex justify-between">
+            <GiCrossedSwords size={36} />
+            <GoHeartFill
+              size={36}
+              color={isFavourite ? "red" : "black"}
+              onClick={handleClick}
+            />
+          </div>
+        )}
       </div>
       <div className="flex flex-col items-center gap-4">
         <p className="text-xl font-bold">

@@ -32,7 +32,7 @@ export const Header = () => {
         </div>
         <div className="flex flex-wrap gap-2 justify-end">
           {routes.basics.map(({ name, id, path }) => (
-            <Link key={id} to={path}>
+            <Link key={id} to={isLoggedIn ? path : ""}>
               <Button>{name}</Button>
             </Link>
           ))}
