@@ -39,7 +39,7 @@ export const Home = () => {
         <>
           <div className="flex flex-wrap gap-4 justify-center">
             {pokeData?.map((pokemon, index) => (
-              <PokeCard key={index} url={pokemon.url} />
+              <PokeCard key={index} name={pokemon.name} />
             ))}
           </div>
           <Pagination page={page} setPage={setPage} maxPage={maxPage} />

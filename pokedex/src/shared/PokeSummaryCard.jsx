@@ -1,38 +1,34 @@
-import React from "react";
 import { capitalizeFirstLetter } from "../utilis/capitalizeFirstLetter";
 import { splitWords } from "../utilis/splitWords";
 import { useParams } from "react-router-dom";
 import { GiCrossedSwords } from "react-icons/gi";
 import { GoHeart, GoHeartFill } from "react-icons/go";
 import { useGetData } from "../hooks/useGetData";
+import { useGetPokemonDetails } from "../hooks/useGetPokemonDetails";
+import { requestFavouriteToJson } from "../services/requestFavouriteToJson";
+import { useCheckIsFavourite } from "../hooks/useCheckIsFavourite";
 
-const url = "https://pokeapi.co/api/v2/pokemon/";
 const baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=150";
 
 export const PokeSummaryCard = () => {
-  const { id } = useParams();
-  const { data } = useGetData(`${url}${id}`);
+  const { name } = useParams();
+  const { pokeDetails, isLoading } = useGetPokemonDetails(name);
   const { data: Pokedb } = useGetData(baseUrl);
-  const details = {
-    id: data?.id,
-    name: data?.name,
-    imgUrl: data?.sprites.other.dream_world.front_default,
-    stats: {
-      height: data?.height,
-      base_experience: data?.base_experience,
-      weight: data?.weight,
-      ability: data?.abilities[0].ability.name,
-    },
-  };
+  const { isFavourite, setIsFavourite } = useCheckIsFavourite(name);
+
+  if (isLoading) {
+    return <p>Loading</p>;
+  }
+
   const validation = Pokedb?.results.some((pokemon) =>
-    pokemon.name.includes(details.name)
+    pokemon.name.includes(pokeDetails?.name)
   );
 
   if (!validation) {
-    return <p> This id does not exist in the database.</p>;
+    return <p>This name does not exist in the database.</p>;
   }
 
-  const statsInfo = Object.entries(details?.stats).map(([key, value]) => (
+  const statsInfo = Object.entries(pokeDetails.stats).map(([key, value]) => (
     <div key={key} className="w-1/2 flex flex-col items-center p-2">
       <p className="text-xs">{value}</p>
       <p className="text-sm font-bold">
@@ -41,22 +37,35 @@ export const PokeSummaryCard = () => {
     </div>
   ));
 
+  const handleClick = () => {
+    if (!isFavourite) {
+      requestFavouriteToJson("post", pokeDetails);
+      setIsFavourite(true);
+    } else {
+      requestFavouriteToJson("delete", pokeDetails);
+      setIsFavourite(false);
+    }
+  };
   return (
-    <div className="w-full border border-gray-200 rounded-lg flex items-center justify-between p-2 gap-8 bg-gradient-to-r from-neutral-100 to-stone-200 shadow-xl">
+    <div className="w-1/2 border border-gray-200 rounded-lg flex items-center justify-between p-2 gap-8 bg-gradient-to-r from-neutral-100 to-stone-200 shadow-xl">
       <div className="flex flex-col gap-4">
-        <img src={details.imgUrl} alt={details.name} className="size-48" />
+        <img
+          src={pokeDetails.imgUrl}
+          alt={pokeDetails.name}
+          className="size-48"
+        />
         <div className="flex justify-between">
-          <GiCrossedSwords size={36} onClick={() => console.log(Pokedb)} />
-          {details.isFavourite ? (
-            <GoHeartFill size={36} color="red" />
-          ) : (
-            <GoHeart size={36} color="red" />
-          )}
+          <GiCrossedSwords size={36} />
+          <GoHeartFill
+            size={36}
+            color={isFavourite ? "red" : "black"}
+            onClick={handleClick}
+          />
         </div>
       </div>
       <div className="flex flex-col items-center gap-4">
         <p className="text-xl font-bold">
-          {capitalizeFirstLetter(details.name)}
+          {capitalizeFirstLetter(pokeDetails.name)}
         </p>
         <div className="flex flex-wrap">{statsInfo}</div>
       </div>

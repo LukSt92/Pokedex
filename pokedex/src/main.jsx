@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       { element: <Ranking />, path: "/ranking" },
       { element: <Login />, path: "/login" },
       { element: <Register />, path: "/register" },
-      { element: <PokeSummaryCard />, path: "/summary/:id" },
+      { element: <PokeSummaryCard />, path: "/summary/:name" },
     ],
   },
 ]);

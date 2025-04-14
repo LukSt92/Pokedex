@@ -30,5 +30,7 @@
       "password": "aA123123!",
       "id": 5
     }
-  ]
+  ],
+  "favourites": [],
+  "pokemons": []
 }
