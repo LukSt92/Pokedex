@@ -37,5 +37,15 @@
       "id": 3
     }
   ],
+  "arenaParticipants": [
+    {
+      "name": "venusaur",
+      "id": 3
+    },
+    {
+      "name": "charmeleon",
+      "id": 5
+    }
+  ],
   "pokemons": []
 }

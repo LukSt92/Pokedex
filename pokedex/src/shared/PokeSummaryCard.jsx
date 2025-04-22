@@ -7,8 +7,10 @@ import { useGetData } from "../hooks/useGetData";
 import { useGetPokemonDetails } from "../hooks/useGetPokemonDetails";
 import { requestFavouriteToJson } from "../services/requestFavouriteToJson";
 import { useCheckIsFavourite } from "../hooks/useCheckIsFavourite";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { LoginContext } from "../context/LoginContext";
+import { useCheckIsInArena } from "../hooks/useCheckIsInArena";
+import { requestArenaParticipantsJson } from "../services/requestArenaParticipantsJson";
 
 const baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=150";
 
@@ -18,6 +20,8 @@ export const PokeSummaryCard = () => {
   const { pokeDetails, isLoading } = useGetPokemonDetails(name);
   const { data: Pokedb } = useGetData(baseUrl);
   const { isFavourite, setIsFavourite } = useCheckIsFavourite(name);
+  const { isInArena, setIsInArena, counter, setCounter } =
+    useCheckIsInArena(name);
 
   if (isLoading) {
     return <p>Loading</p>;
@@ -40,7 +44,7 @@ export const PokeSummaryCard = () => {
     </div>
   ));
 
-  const handleClick = () => {
+  const handleFavourClick = () => {
     if (!isFavourite) {
       requestFavouriteToJson("post", pokeDetails);
       setIsFavourite(true);
@@ -49,6 +53,16 @@ export const PokeSummaryCard = () => {
       setIsFavourite(false);
     }
   };
+
+  const handleArenaClick = () => {
+    if (!isInArena && counter < 2) {
+      requestArenaParticipantsJson("post", pokeDetails);
+      setIsInArena(true);
+      setCounter((prev) => prev + 1);
+      //TODO ADD Notifications!!
+    }
+  };
+
   return (
     <div className="w-1/2 border border-gray-200 rounded-lg flex items-center justify-between p-2 gap-8 bg-gradient-to-r from-neutral-100 to-stone-200 shadow-xl">
       <div className="flex flex-col gap-4">
@@ -59,11 +73,14 @@ export const PokeSummaryCard = () => {
         />
         {isLoggedIn && (
           <div className="flex justify-between">
-            <GiCrossedSwords size={36} />
+            <div className="flex items-center gap-2">
+              <GiCrossedSwords size={36} onClick={handleArenaClick} />
+              <div>{counter} / 2</div>
+            </div>
             <GoHeartFill
               size={36}
               color={isFavourite ? "red" : "black"}
-              onClick={handleClick}
+              onClick={handleFavourClick}
             />
           </div>
         )}
