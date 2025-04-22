@@ -2,7 +2,7 @@ import { capitalizeFirstLetter } from "../utilis/capitalizeFirstLetter";
 import { splitWords } from "../utilis/splitWords";
 import { useParams } from "react-router-dom";
 import { GiCrossedSwords } from "react-icons/gi";
-import { GoHeart, GoHeartFill } from "react-icons/go";
+import { GoHeartFill } from "react-icons/go";
 import { useGetData } from "../hooks/useGetData";
 import { useGetPokemonDetails } from "../hooks/useGetPokemonDetails";
 import { requestFavouriteToJson } from "../services/requestFavouriteToJson";

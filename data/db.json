@@ -31,6 +31,11 @@
       "id": 5
     }
   ],
-  "favourites": [],
+  "favourites": [
+    {
+      "name": "venusaur",
+      "id": 3
+    }
+  ],
   "pokemons": []
 }

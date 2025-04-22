@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ThemeSwitch } from "./ThemeSwitch";
 import { Button } from "../../shared/Button";
 import { LoginContext } from "../../context/LoginContext";
@@ -16,9 +16,16 @@ const routes = {
     { name: "Login", id: 6, path: "login" },
   ],
 };
+
 export const Header = () => {
   const { isLoggedIn, setLoggedIn } = useContext(LoginContext);
   const userName = localStorage.getItem("userName");
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    setLoggedIn(false);
+    navigate("/");
+  };
 
   return (
     <div className="flex w-screen p-8 border-b-4 border-indigo-500">
@@ -32,7 +39,7 @@ export const Header = () => {
         </div>
         <div className="flex flex-wrap gap-2 justify-end">
           {routes.basics.map(({ name, id, path }) => (
-            <Link key={id} to={isLoggedIn ? path : ""}>
+            <Link key={id} to={isLoggedIn && path}>
               <Button>{name}</Button>
             </Link>
           ))}
@@ -43,7 +50,7 @@ export const Header = () => {
               </Link>
             ))
           ) : (
-            <Button onClick={() => setLoggedIn(false)}>Log out</Button>
+            <Button onClick={handleClick}>Log out</Button>
           )}
         </div>
       </div>
