@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { GiCrossedSwords } from "react-icons/gi";
 import { GoHeartFill } from "react-icons/go";
 import { useGetData } from "../hooks/useGetData";
-import { useGetPokemonDetails } from "../hooks/useGetPokemonDetails";
+import { useGetPokeDetails } from "../hooks/useGetPokeDetails";
 import { requestFavouriteToJson } from "../services/requestFavouriteToJson";
 import { useCheckIsFavourite } from "../hooks/useCheckIsFavourite";
 import { useContext } from "react";
@@ -17,7 +17,7 @@ const baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=150";
 export const PokeSummaryCard = () => {
   const { isLoggedIn } = useContext(LoginContext);
   const { name } = useParams();
-  const { pokeDetails, isLoading } = useGetPokemonDetails(name);
+  const { pokeDetails, isLoading } = useGetPokeDetails(name);
   const { data: Pokedb } = useGetData(baseUrl);
   const { isFavourite, setIsFavourite } = useCheckIsFavourite(name);
   const { isInArena, setIsInArena, counter, setCounter } =

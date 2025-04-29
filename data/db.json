@@ -39,13 +39,54 @@
   ],
   "arenaParticipants": [
     {
-      "name": "charmander",
-      "id": 4
+      "id": 3,
+      "name": "venusaur",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg",
+      "stats": {
+        "height": 20,
+        "base_experience": 303,
+        "weight": 1000,
+        "ability": "overgrow"
+      },
+      "wins": 4
     },
     {
-      "name": "venusaur",
-      "id": 3
+      "id": 4,
+      "name": "charmander",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/4.svg",
+      "stats": {
+        "height": 6,
+        "base_experience": 62,
+        "weight": 85,
+        "ability": "blaze"
+      },
+      "losses": 4
     }
   ],
-  "pokemons": []
+  "pokemons": [
+    {
+      "id": 3,
+      "name": "venusaur",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg",
+      "stats": {
+        "height": 20,
+        "base_experience": 323,
+        "weight": 1000,
+        "ability": "overgrow"
+      },
+      "wins": 6
+    },
+    {
+      "id": 4,
+      "name": "charmander",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/4.svg",
+      "stats": {
+        "height": 6,
+        "base_experience": 62,
+        "weight": 85,
+        "ability": "blaze"
+      },
+      "losses": 6
+    }
+  ]
 }

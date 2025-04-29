@@ -2,7 +2,7 @@ import { Title } from "../../shared/Title";
 import { ArenaPokeCard } from "./ArenaPokeCard";
 import { GiCrossedSwords } from "react-icons/gi";
 import { useArenaHandler } from "./useArenaHandler";
-import { postPokemonToJson } from "../../services/postPokemonToJson";
+import { postPokemonToJson } from "../../services/postPokemonToJson.js";
 import { useEffect, useState } from "react";
 
 export const Arena = () => {
@@ -12,6 +12,7 @@ export const Arena = () => {
     isLoading,
     setFirstPokemon,
     setSecondPokemon,
+    addOrUpdatePokeData,
   } = useArenaHandler();
   const [showModal, setShowModal] = useState(false);
   const results = {};
@@ -26,19 +27,21 @@ export const Arena = () => {
 
     if (firstPokeBP > secPokeBP) {
       firstParticipant.stats.base_experience += 10;
-      firstParticipant.wins = (firstParticipant.wins || 0) + 3;
+      firstParticipant.wins = (firstParticipant.wins || 0) + 1;
       secParticipant.losses = (secParticipant.losses || 0) + 1;
       results.winner = firstParticipant;
-      postPokemonToJson(firstParticipant);
+      addOrUpdatePokeData(firstParticipant);
+      addOrUpdatePokeData(secParticipant);
     }
     if (secPokeBP > firstPokeBP) {
       secParticipant.stats.base_experience += 10;
       secParticipant.wins = (secParticipant.wins || 0) + 1;
       firstParticipant.losses = (firstParticipant.losses || 0) + 1;
       results.winner = secParticipant;
+      addOrUpdatePokeData(firstParticipant);
+      addOrUpdatePokeData(secParticipant);
     }
     // setShowModal((prev) => !prev);
-    console.log(results);
   };
 
   if (isLoading) return <p>Loading</p>;

@@ -1,10 +1,10 @@
 import { capitalizeFirstLetter } from "../utilis/capitalizeFirstLetter";
 import { splitWords } from "../utilis/splitWords";
 import { useNavigate } from "react-router-dom";
-import { useGetPokemonDetails } from "../hooks/useGetPokemonDetails";
+import { useGetPokeDetails } from "../hooks/useGetPokeDetails";
 
 export const PokeCard = ({ name, children, arena = false }) => {
-  const { pokeDetails, isLoading } = useGetPokemonDetails(name);
+  const { pokeDetails, isLoading } = useGetPokeDetails(name);
   const navigate = useNavigate();
 
   const handleClick = () => {
