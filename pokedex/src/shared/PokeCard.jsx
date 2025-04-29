@@ -3,11 +3,13 @@ import { splitWords } from "../utilis/splitWords";
 import { useNavigate } from "react-router-dom";
 import { useGetPokemonDetails } from "../hooks/useGetPokemonDetails";
 
-export const PokeCard = ({ name }) => {
+export const PokeCard = ({ name, children, arena = false }) => {
   const { pokeDetails, isLoading } = useGetPokemonDetails(name);
   const navigate = useNavigate();
 
-  const handleClick = () => navigate(`/summary/${pokeDetails.name}`);
+  const handleClick = () => {
+    if (!arena) navigate(`/summary/${pokeDetails.name}`);
+  };
 
   if (isLoading) {
     return <p>Loading</p>;
@@ -25,7 +27,7 @@ export const PokeCard = ({ name }) => {
   return (
     <div
       onClick={handleClick}
-      className="w-sm border border-gray-200 rounded-lg flex flex-col items-center p-2 gap-8 bg-gradient-to-r from-neutral-100 to-stone-200 shadow-xl hover:scale-105 transition duration-300"
+      className="relative w-sm border border-gray-200 rounded-lg flex flex-col items-center p-2 gap-8 bg-gradient-to-r from-neutral-100 to-stone-200 shadow-xl hover:scale-105 transition duration-300"
     >
       <img
         src={pokeDetails.imgUrl}
@@ -36,6 +38,7 @@ export const PokeCard = ({ name }) => {
         {capitalizeFirstLetter(pokeDetails.name)}
       </p>
       <div className="flex flex-wrap">{statsInfo}</div>
+      {children}
     </div>
   );
 };

@@ -7,7 +7,7 @@ import { useGetData } from "../hooks/useGetData";
 import { useGetPokemonDetails } from "../hooks/useGetPokemonDetails";
 import { requestFavouriteToJson } from "../services/requestFavouriteToJson";
 import { useCheckIsFavourite } from "../hooks/useCheckIsFavourite";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
 import { useCheckIsInArena } from "../hooks/useCheckIsInArena";
 import { requestArenaParticipantsJson } from "../services/requestArenaParticipantsJson";
