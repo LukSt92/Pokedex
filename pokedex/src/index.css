@@ -5,6 +5,28 @@
 @theme {
   --color-bgPrimColor: #ffffff;
   --color-ftPrimColor: #0f0f0f;
+  --animate-opacity: opacity-in 1s ease-in-out forwards;
+  --animate-slow-opacity: slow-opacity-in 3s ease-in-out forwards;
+}
+
+@keyframes opacity-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+@keyframes slow-opacity-in {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
 }
 
 @layer theme {
