@@ -79,7 +79,7 @@ export const PokeSummaryCard = () => {
             </div>
             <GoHeartFill
               size={36}
-              color={isFavourite ? "red" : "black"}
+              color={isFavourite ? "red" : "grey"}
               onClick={handleFavourClick}
             />
           </div>

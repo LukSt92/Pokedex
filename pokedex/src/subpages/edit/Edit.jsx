@@ -1,5 +1,39 @@
-import React from "react";
+import { useGetAllPokemonsDetails } from "../../hooks/useGetAllPokemonsDetails";
+import { Title } from "../../shared/Title";
+import { capitalizeFirstLetter } from "../../utilis/capitalizeFirstLetter";
+import { Button } from "../../shared/Button";
+import { useNavigate } from "react-router-dom";
 
 export const Edit = () => {
-  return <div>Edit</div>;
+  const { allPokeDetails, isLoading } = useGetAllPokemonsDetails();
+  const navigate = useNavigate();
+
+  if (isLoading) return <div>Loading...</div>;
+
+  const handleEditClick = (name) => {
+    navigate(`/edit/${name}`);
+  };
+
+  return (
+    <>
+      <Title>Edit</Title>
+      <ul className="flex flex-col items-stretch gap-4 w-2/3 max-md:text-xs max-md:w-4/5 max-sm:text-[10px]">
+        {allPokeDetails.map((pokemon, index) => (
+          <li
+            key={index}
+            className="grid grid-cols-4 text-center font-medium items-center border border-border-color rounded-lg bg-gradient-to-r from-bg-prim-color to-bg-sec-color shadow-xl transition-colors duration-300"
+          >
+            <div>{index + 1}</div>
+            <img
+              src={pokemon.imgUrl}
+              alt={pokemon.name}
+              className="size-12 max-sm:size-8 justify-self-center"
+            />
+            <div>{capitalizeFirstLetter(pokemon.name)}</div>
+            <Button onClick={() => handleEditClick(pokemon.name)}>Edit</Button>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
 };

@@ -12,6 +12,7 @@ import { Ranking } from "./subpages/ranking/Ranking.jsx";
 import { LoginProvider } from "./context/LoginContext.jsx";
 import { SnackbarProvider } from "notistack";
 import { PokeSummaryCard } from "./shared/PokeSummaryCard.jsx";
+import { EditPokemon } from "./subpages/edit/EditPokemon.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
       { element: <Login />, path: "/login" },
       { element: <Register />, path: "/register" },
       { element: <PokeSummaryCard />, path: "/summary/:name" },
+      { element: <EditPokemon />, path: "/edit/:name" },
     ],
   },
 ]);
