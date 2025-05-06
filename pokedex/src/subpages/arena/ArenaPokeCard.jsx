@@ -1,5 +1,5 @@
 import { PokeCard } from "../../shared/PokeCard";
-import placeholder from "../../../public/placeholder.jpg";
+import pokeball from "../../../public/pokeball.svg";
 import { RxCross2 } from "react-icons/rx";
 import { requestArenaParticipantsJson } from "../../services/requestArenaParticipantsJson";
 
@@ -20,7 +20,7 @@ export const ArenaPokeCard = ({ pokeData, setPokeData }) => {
           />
         </PokeCard>
       ) : (
-        <img src={placeholder} className="w-sm" />
+        <img src={pokeball} className="w-sm" />
       )}
     </>
   );

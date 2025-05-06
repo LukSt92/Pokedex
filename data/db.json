@@ -43,28 +43,16 @@
   ],
   "arenaParticipants": [
     {
-      "id": 1,
-      "name": "bulbasaur",
-      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg",
-      "stats": {
-        "height": 7,
-        "base_experience": 64,
-        "weight": 69,
-        "ability": "overgrow"
-      },
-      "losses": 3
-    },
-    {
       "id": 3,
       "name": "venusaur",
       "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg",
       "stats": {
         "height": 20,
-        "base_experience": 323,
+        "base_experience": 343,
         "weight": 1000,
         "ability": "overgrow"
       },
-      "wins": 6
+      "wins": 8
     }
   ],
   "pokemons": [
@@ -74,11 +62,11 @@
       "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg",
       "stats": {
         "height": 20,
-        "base_experience": 333,
+        "base_experience": 343,
         "weight": 1000,
         "ability": "overgrow"
       },
-      "wins": 7
+      "wins": 8
     },
     {
       "id": 4,
@@ -103,7 +91,7 @@
         "weight": 69,
         "ability": "overgrow"
       },
-      "losses": 4
+      "losses": 5
     },
     {
       "id": 8,

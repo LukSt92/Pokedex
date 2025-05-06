@@ -79,7 +79,7 @@ export const Arena = () => {
           setPokeData={setSecondPokemon}
         />
         {showModal && (
-          <div className="fixed z-2 right-0 top-1/6 h-1/2 w-full bg-bgPrimColor flex flex-col items-center gap-12 p-8 animate-opacity transition-colors duration-300">
+          <div className="fixed z-2 right-0 top-1/6 h-1/2 w-full bg-bg-prim-color flex flex-col items-center gap-12 p-8 animate-opacity transition-colors duration-300">
             {results == {} ? (
               <Title>Draw</Title>
             ) : (

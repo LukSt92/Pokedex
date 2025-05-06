@@ -28,7 +28,7 @@ export const Header = () => {
   };
 
   return (
-    <div className="flex w-screen p-8 border-b-4 border-indigo-500">
+    <div className="flex w-screen p-8 border-b-4 border-border-color">
       <Link to={"/"} className="shrink-0">
         <img src={"../../../International_Pokémon_logo.svg"}></img>
       </Link>

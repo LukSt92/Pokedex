@@ -27,7 +27,7 @@ export const PokeCard = ({ name, children, arena = false }) => {
   return (
     <div
       onClick={handleClick}
-      className="relative w-sm border border-gray-200 rounded-lg flex flex-col items-center p-2 gap-8 bg-gradient-to-r from-neutral-100 to-stone-200 shadow-xl hover:scale-105 transition duration-300"
+      className="relative w-sm border border-border-color rounded-lg flex flex-col items-center p-2 gap-8 bg-gradient-to-r from-bg-prim-color to-bg-sec-color shadow-xl hover:scale-105 transition duration-300"
     >
       <img
         src={pokeDetails.imgUrl}
