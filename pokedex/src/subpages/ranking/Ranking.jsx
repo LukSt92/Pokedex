@@ -20,7 +20,7 @@ export const Ranking = () => {
     <>
       <Title>Ranking</Title>
       <SortingRadioGroup setSortBy={setSortBy} />
-      <ul className="flex flex-col items-stretch gap-4 w-2/3 max-md:text-xs max-md:w-4/5 max-sm:text-[9px]">
+      <ul className="flex flex-col items-stretch gap-4 w-2/3 max-md:text-xs max-md:w-4/5 max-sm:text-[10px]">
         <li className="grid grid-cols-6 text-center font-bold">
           <div>#</div>
           <div>Img:</div>

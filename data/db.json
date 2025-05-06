@@ -39,6 +39,22 @@
     {
       "name": "bulbasaur",
       "id": 1
+    },
+    {
+      "name": "charmander",
+      "id": 4
+    },
+    {
+      "name": "charizard",
+      "id": 6
+    },
+    {
+      "name": "squirtle",
+      "id": 7
+    },
+    {
+      "name": "metapod",
+      "id": 11
     }
   ],
   "arenaParticipants": [

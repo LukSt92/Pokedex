@@ -17,14 +17,14 @@ export const Pagination = ({ page, maxPage, setPage }) => {
   return (
     <div className="flex items-center gap-8">
       <Button onClick={() => handleClick("prev")}>
-        <FiArrowLeft className=" text-xl md:text-lg" />
+        <FiArrowLeft size={20} />
       </Button>
       <p>
         Page <strong>{page}</strong> of&nbsp;
         <strong>{maxPage.toString()}</strong>
       </p>
       <Button onClick={() => handleClick("next")}>
-        <FiArrowRight className=" text-xl md:text-lg" />
+        <FiArrowRight size={20} />
       </Button>
     </div>
   );

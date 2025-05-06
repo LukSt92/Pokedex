@@ -28,16 +28,16 @@ export const Header = () => {
   };
 
   return (
-    <div className="flex w-screen p-8 border-b-4 border-border-color">
+    <div className="flex w-screen p-8 border-b-4 border-border-color max-lg:flex-col max-lg:items-center">
       <Link to={"/"} className="shrink-0">
         <img src={"../../../International_Pokémon_logo.svg"}></img>
       </Link>
-      <div className="flex flex-col items-end grow gap-4">
+      <div className="flex flex-col items-end grow gap-4 max-lg:items-center">
         <div className="flex items-center gap-2">
           {isLoggedIn && <h4 className="font-bold">{userName}</h4>}
           <ThemeSwitch />
         </div>
-        <div className="flex flex-wrap gap-2 justify-end">
+        <div className="flex flex-wrap gap-2 justify-end max-md:flex-col">
           {routes.basics.map(({ name, id, path }) => (
             <Link key={id} to={isLoggedIn && path}>
               <Button>{name}</Button>

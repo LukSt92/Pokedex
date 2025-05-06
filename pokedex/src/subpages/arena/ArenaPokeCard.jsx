@@ -20,7 +20,7 @@ export const ArenaPokeCard = ({ pokeData, setPokeData }) => {
           />
         </PokeCard>
       ) : (
-        <img src={pokeball} className="w-sm" />
+        <img src={pokeball} className="w-xs" />
       )}
     </>
   );

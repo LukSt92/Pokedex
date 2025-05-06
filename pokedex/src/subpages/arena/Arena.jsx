@@ -65,7 +65,7 @@ export const Arena = () => {
   return (
     <>
       <Title>Arena</Title>
-      <div className="flex gap-8 items-center">
+      <div className="flex gap-8 items-center max-lg:flex-col">
         <ArenaPokeCard pokeData={firstPokemon} setPokeData={setFirstPokemon} />
         <div
           onClick={handleFight}
