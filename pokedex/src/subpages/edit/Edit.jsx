@@ -21,7 +21,7 @@ export const Edit = () => {
         {allPokeDetails.map((pokemon, index) => (
           <li
             key={index}
-            className="grid grid-cols-4 text-center font-medium items-center border border-deep-gold rounded-lg bg-gradient-to-r from-bg-prim-color to-bg-sec-color shadow-xl transition-colors duration-300"
+            className="flex justify-between font-medium px-3 items-center border border-deep-gold rounded-lg bg-gradient-to-r from-bg-prim-color to-bg-sec-color shadow-xl transition-colors duration-300"
           >
             <div>{index + 1}</div>
             <img
@@ -30,7 +30,12 @@ export const Edit = () => {
               className="size-12 max-sm:size-8 justify-self-center"
             />
             <div>{capitalizeFirstLetter(pokemon.name)}</div>
-            <Button onClick={() => handleEditClick(pokemon.name)}>Edit</Button>
+            <div
+              className="text-deep-gold font-bold underline underline-offset-4 text-lg"
+              onClick={() => handleEditClick(pokemon.name)}
+            >
+              Edit
+            </div>
           </li>
         ))}
       </ul>

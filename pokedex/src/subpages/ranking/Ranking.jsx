@@ -11,9 +11,14 @@ export const Ranking = () => {
   if (isLoading) return <div>Loading...</div>;
 
   allPokeDetails?.sort((a, b) => {
-    const aEntry = Object.entries(a.stats).find(([key]) => key === sortBy);
-    const bEntry = Object.entries(b.stats).find(([key]) => key === sortBy);
-    return bEntry[1] - aEntry[1];
+    if (sortBy === "wins") {
+      console.log(a.wins);
+      return (b.wins || 0) - (a.wins || 0);
+    } else {
+      const aEntry = Object.entries(a.stats).find(([key]) => key === sortBy);
+      const bEntry = Object.entries(b.stats).find(([key]) => key === sortBy);
+      return bEntry[1] - aEntry[1];
+    }
   });
 
   return (
@@ -21,18 +26,19 @@ export const Ranking = () => {
       <Title>Ranking</Title>
       <SortingRadioGroup setSortBy={setSortBy} />
       <ul className="flex flex-col items-stretch gap-4 w-2/3 max-md:text-xs max-md:w-4/5 max-sm:text-[10px]">
-        <li className="grid grid-cols-6 text-center font-bold">
+        <li className="grid grid-cols-7 text-center font-bold">
           <div>#</div>
-          <div>Img:</div>
-          <div>Name:</div>
-          <div>Height:</div>
-          <div>Weight:</div>
-          <div>Experience:</div>
+          <div>Img</div>
+          <div>Name</div>
+          <div>Hgt</div>
+          <div>Wgt</div>
+          <div>Exp</div>
+          <div>Wins</div>
         </li>
         {allPokeDetails.map((pokemon, index) => (
           <li
             key={index}
-            className="grid grid-cols-6 text-center font-medium items-center border border-deep-gold rounded-lg bg-gradient-to-r from-bg-prim-color to-bg-sec-color shadow-xl transition-colors duration-300"
+            className="grid grid-cols-7 text-center font-medium items-center border border-deep-gold rounded-lg bg-gradient-to-r from-bg-prim-color to-bg-sec-color shadow-xl transition-colors duration-300"
           >
             <div>{index + 1}</div>
             <img
@@ -44,6 +50,7 @@ export const Ranking = () => {
             <div>{pokemon.stats.height}</div>
             <div>{pokemon.stats.weight}</div>
             <div>{pokemon.stats.base_experience}</div>
+            <div>{pokemon.wins || 0}</div>
           </li>
         ))}
       </ul>

@@ -3,20 +3,20 @@ import { capitalizeFirstLetter } from "../../utilis/capitalizeFirstLetter";
 import { splitWords } from "../../utilis/splitWords";
 
 export const SortingRadioGroup = ({ setSortBy }) => {
-  const values = ["height", "weight", "base_experience"];
+  const values = ["height", "weight", "base_experience", "wins"];
 
   return (
-    <div className="flex flex-col justify-center items-center gap-2 w-full">
+    <div className="flex flex-col justify-center items-center w-full">
       <p className="text-xl font-semibold">Sort by:</p>
-      <ul className="w-1/2 text-sm font-medium border border-deep-gold rounded-lg sm:flex">
+      <ul className="w-2/3 flex justify-evenly px-2 text-sm font-medium border border-deep-gold rounded-lg sm:flex">
         {values.map((value, index) => (
-          <li key={index} className="w-full border-b border-deep-gold">
+          <li key={index}>
             <div className="flex items-center ps-3">
               <input
                 type="radio"
                 value={value}
                 name="list-radio"
-                className="w-6 h-6 bg-gray-100 border-gray-300 focus:ring-blue-500"
+                className="min-w-6 min-h-6"
                 onClick={() => setSortBy(value)}
               />
               <label className="w-full py-3 ms-2 text-sm font-medium">
