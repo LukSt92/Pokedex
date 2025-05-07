@@ -2,6 +2,7 @@ import { capitalizeFirstLetter } from "../utilis/capitalizeFirstLetter";
 import { splitWords } from "../utilis/splitWords";
 import { useNavigate } from "react-router-dom";
 import { useGetPokeDetails } from "../hooks/useGetPokeDetails";
+import { BattleStats } from "./BattleStats";
 
 export const PokeCard = ({ name, children, arena = false }) => {
   const { pokeDetails, isLoading } = useGetPokeDetails(name);
@@ -39,6 +40,9 @@ export const PokeCard = ({ name, children, arena = false }) => {
       </p>
       <div className="flex flex-wrap">{statsInfo}</div>
       {children}
+      {(pokeDetails.wins || pokeDetails.losses) && (
+        <BattleStats pokeDetails={pokeDetails} />
+      )}
     </div>
   );
 };
