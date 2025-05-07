@@ -77,7 +77,7 @@
       "name": "venusaur",
       "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg",
       "stats": {
-        "height": 20,
+        "height": 2023,
         "base_experience": 343,
         "weight": 1000,
         "ability": "overgrow"
@@ -89,25 +89,24 @@
       "name": "charmander",
       "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/4.svg",
       "stats": {
-        "height": 6,
+        "height": 623,
         "base_experience": 72,
         "weight": 85,
         "ability": "blaze"
       },
-      "losses": 5,
-      "wins": 1
+      "wins": 1,
+      "losses": 5
     },
     {
       "id": 1,
       "name": "bulbasaur",
       "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg",
       "stats": {
-        "height": 7,
-        "base_experience": 64,
-        "weight": 69,
+        "height": 722,
+        "base_experience": 64232323,
+        "weight": 6923,
         "ability": "overgrow"
-      },
-      "losses": 5
+      }
     },
     {
       "id": 8,

@@ -11,6 +11,6 @@ export const createNewUser = async (data) => {
       password: data.password,
     })
     .catch(function (error) {
-      console.log(error);
+      console.error(error);
     });
 };

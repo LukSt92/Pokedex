@@ -12,7 +12,6 @@ export const Ranking = () => {
 
   allPokeDetails?.sort((a, b) => {
     if (sortBy === "wins") {
-      console.log(a.wins);
       return (b.wins || 0) - (a.wins || 0);
     } else {
       const aEntry = Object.entries(a.stats).find(([key]) => key === sortBy);

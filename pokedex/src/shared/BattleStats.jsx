@@ -1,8 +1,6 @@
 import React from "react";
 
 export const BattleStats = ({ pokeDetails }) => {
-  console.log(pokeDetails.name);
-  console.log(pokeDetails.wins);
   return (
     <div className="absolute flex flex-col top-0 left-0 bg-deep-gold p-3 font-bold text-center text-raisin-black rounded-tl-sm rounded-br-lg">
       <div className="flex gap-2">

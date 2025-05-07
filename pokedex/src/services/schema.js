@@ -27,3 +27,9 @@ export const loginSchema = z.object({
   username: z.string().min(1, { message: "This field is required." }),
   password: z.string().min(1, { message: "This field is required." }),
 });
+
+export const editPokemonSchema = z.object({
+  height: z.coerce.number().min(1, { message: "This field is required." }),
+  weight: z.coerce.number().min(1, { message: "This field is required." }),
+  experience: z.coerce.number().min(1, { message: "This field is required." }),
+});
