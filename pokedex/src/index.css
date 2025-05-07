@@ -3,7 +3,10 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-border-color: #ffd230;
+  --color-deep-gold: #febe10;
+  --color-deep-sky: #87cefa;
+  --color-raisin-black: #242124;
+  --color-milk: #fdfff5;
   --color-bg-prim-color: #e2e8f0;
   --color-bg-sec-color: #e7e5e4;
   --color-ft-prim-color: #0f172b;

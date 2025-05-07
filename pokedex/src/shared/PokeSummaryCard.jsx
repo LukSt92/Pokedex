@@ -64,7 +64,7 @@ export const PokeSummaryCard = () => {
   };
 
   return (
-    <div className="w-1/2 border border-border-color rounded-lg flex items-center justify-between p-2 gap-8 bg-gradient-to-r from-bg-prim-color to-bg-sec-color shadow-xl transition-colors duration-300">
+    <div className="w-1/2 border border-deep-gold rounded-lg flex items-center justify-between p-2 gap-8 bg-gradient-to-r from-bg-prim-color to-bg-sec-color shadow-xl transition-colors duration-300">
       <div className="flex flex-col gap-4">
         <img
           src={pokeDetails.imgUrl}

@@ -8,9 +8,9 @@ export const SortingRadioGroup = ({ setSortBy }) => {
   return (
     <div className="flex flex-col justify-center items-center gap-2 w-full">
       <p className="text-xl font-semibold">Sort by:</p>
-      <ul className="w-1/2 text-sm font-medium border border-border-color rounded-lg sm:flex">
+      <ul className="w-1/2 text-sm font-medium border border-deep-gold rounded-lg sm:flex">
         {values.map((value, index) => (
-          <li key={index} className="w-full border-b border-border-color">
+          <li key={index} className="w-full border-b border-deep-gold">
             <div className="flex items-center ps-3">
               <input
                 type="radio"
