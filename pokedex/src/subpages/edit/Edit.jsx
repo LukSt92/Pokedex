@@ -3,12 +3,13 @@ import { Title } from "../../shared/Title";
 import { capitalizeFirstLetter } from "../../utilis/capitalizeFirstLetter";
 import { Button } from "../../shared/Button";
 import { useNavigate } from "react-router-dom";
+import { Loader } from "../../shared/Loader";
 
 export const Edit = () => {
   const { allPokeDetails, isLoading } = useGetAllPokemonsDetails();
   const navigate = useNavigate();
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader />;
 
   const handleEditClick = (name) => {
     navigate(`/edit/${name}`);

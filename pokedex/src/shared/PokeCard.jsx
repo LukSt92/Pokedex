@@ -3,6 +3,7 @@ import { splitWords } from "../utilis/splitWords";
 import { useNavigate } from "react-router-dom";
 import { useGetPokeDetails } from "../hooks/useGetPokeDetails";
 import { BattleStats } from "./BattleStats";
+import { Loader } from "./Loader";
 
 export const PokeCard = ({ name, children, arena = false }) => {
   const { pokeDetails, isLoading } = useGetPokeDetails(name);
@@ -13,7 +14,7 @@ export const PokeCard = ({ name, children, arena = false }) => {
   };
 
   if (isLoading) {
-    return <p>Loading</p>;
+    return <Loader />;
   }
 
   const statsInfo = Object.entries(pokeDetails.stats).map(([key, value]) => (

@@ -3,6 +3,7 @@ import { Pagination } from "./Pagination";
 import { PokeCard } from "../../shared/PokeCard";
 import { Title } from "../../shared/Title";
 import { useGetData } from "../../hooks/useGetData";
+import { Loader } from "../../shared/Loader";
 
 const url = "https://pokeapi.co/api/v2/pokemon?limit=150";
 
@@ -34,7 +35,7 @@ export const Home = () => {
         />
       </div>
       {isLoading ? (
-        <p>Loading</p>
+        <Loader />
       ) : (
         <>
           <div className="flex flex-wrap gap-4 justify-center">

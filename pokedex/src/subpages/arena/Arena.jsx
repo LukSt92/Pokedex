@@ -7,6 +7,7 @@ import { Button } from "../../shared/Button.jsx";
 import { capitalizeFirstLetter } from "../../utilis/capitalizeFirstLetter.js";
 import { requestArenaParticipantsJson } from "../../services/requestArenaParticipantsJson.js";
 import { useNotification } from "../../hooks/useNotification.js";
+import { Loader } from "../../shared/Loader.jsx";
 
 export const Arena = () => {
   const {
@@ -60,7 +61,7 @@ export const Arena = () => {
     setSecondPokemon();
   };
 
-  if (isLoading) return <p>Loading</p>;
+  if (isLoading) return <Loader />;
 
   return (
     <>

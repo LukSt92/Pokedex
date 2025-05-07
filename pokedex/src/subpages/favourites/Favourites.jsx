@@ -2,13 +2,14 @@ import React from "react";
 import { useGetData } from "../../hooks/useGetData";
 import { PokeCard } from "../../shared/PokeCard";
 import { Title } from "../../shared/Title";
+import { Loader } from "../../shared/Loader";
 
 const url = "http://localhost:3000/favourites/";
 
 export const Favourites = () => {
   const { data, isLoading } = useGetData(url);
 
-  if (isLoading) return <div>Loading</div>;
+  if (isLoading) return <Loader />;
 
   data.sort((a, b) => {
     return a.id - b.id;

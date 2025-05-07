@@ -11,6 +11,7 @@ import { Button } from "../../shared/Button";
 import { requestPokemonJson } from "../../services/requestPokemonJson";
 import { useNotification } from "../../hooks/useNotification";
 import { useNavigate } from "react-router-dom";
+import { Loader } from "../../shared/Loader";
 
 const baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=150";
 const pokemonsJsonUrl = "http://localhost:3000/pokemons/";
@@ -41,7 +42,7 @@ export const EditPokemon = () => {
   });
 
   if (isLoading) {
-    return <p>Loading</p>;
+    return <Loader />;
   }
 
   const validation = Pokedb?.results.some((pokemon) =>

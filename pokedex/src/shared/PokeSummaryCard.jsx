@@ -11,6 +11,8 @@ import { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
 import { useCheckIsInArena } from "../hooks/useCheckIsInArena";
 import { requestArenaParticipantsJson } from "../services/requestArenaParticipantsJson";
+import { BattleStats } from "./BattleStats";
+import { Loader } from "./Loader";
 
 const baseUrl = "https://pokeapi.co/api/v2/pokemon?limit=150";
 
@@ -24,7 +26,7 @@ export const PokeSummaryCard = () => {
     useCheckIsInArena(name);
 
   if (isLoading) {
-    return <p>Loading</p>;
+    return <Loader />;
   }
 
   const validation = Pokedb?.results.some((pokemon) =>
@@ -59,12 +61,11 @@ export const PokeSummaryCard = () => {
       requestArenaParticipantsJson("post", pokeDetails);
       setIsInArena(true);
       setCounter((prev) => prev + 1);
-      //TODO ADD Notifications!!
     }
   };
 
   return (
-    <div className="w-1/2 border border-deep-gold rounded-lg flex items-center justify-between p-2 gap-8 bg-gradient-to-r from-bg-prim-color to-bg-sec-color shadow-xl transition-colors duration-300">
+    <div className="relative w-3/4 max-sm:w-full border border-deep-gold rounded-lg flex max-lg:flex-col items-center justify-evenly p-2 gap-8 bg-gradient-to-r from-bg-prim-color to-bg-sec-color shadow-xl transition-colors duration-300">
       <div className="flex flex-col gap-4">
         <img
           src={pokeDetails.imgUrl}
@@ -91,6 +92,9 @@ export const PokeSummaryCard = () => {
         </p>
         <div className="flex flex-wrap">{statsInfo}</div>
       </div>
+      {(pokeDetails.wins || pokeDetails.losses) && (
+        <BattleStats pokeDetails={pokeDetails} />
+      )}
     </div>
   );
 };

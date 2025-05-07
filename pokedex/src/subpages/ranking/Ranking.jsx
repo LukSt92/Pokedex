@@ -3,12 +3,13 @@ import { useGetAllPokemonsDetails } from "../../hooks/useGetAllPokemonsDetails";
 import { Title } from "../../shared/Title";
 import { SortingRadioGroup } from "./SortingRadioGroup";
 import { capitalizeFirstLetter } from "../../utilis/capitalizeFirstLetter";
+import { Loader } from "../../shared/Loader";
 
 export const Ranking = () => {
   const { allPokeDetails, isLoading } = useGetAllPokemonsDetails();
   const [sortBy, setSortBy] = useState("height");
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader />;
 
   allPokeDetails?.sort((a, b) => {
     if (sortBy === "wins") {
