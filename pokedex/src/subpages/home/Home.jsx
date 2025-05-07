@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Pagination } from "./Pagination";
 import { PokeCard } from "../../shared/PokeCard";
 import { Title } from "../../shared/Title";

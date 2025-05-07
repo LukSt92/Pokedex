@@ -1,5 +1,3 @@
-import React from "react";
-
 export const BattleStats = ({ pokeDetails }) => {
   return (
     <div className="absolute flex flex-col top-0 left-0 bg-deep-gold p-3 font-bold text-center text-raisin-black rounded-tl-sm rounded-br-lg">

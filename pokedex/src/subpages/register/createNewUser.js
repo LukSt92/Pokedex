@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 
 const url = "http://localhost:3000/users";

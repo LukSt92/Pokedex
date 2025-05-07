@@ -1,4 +1,3 @@
-import React from "react";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { Button } from "../../shared/Button";
 

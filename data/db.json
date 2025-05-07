@@ -1,36 +1,5 @@
 {
-  "users": [
-    {
-      "userName": "test",
-      "email": "test@o2.pl",
-      "password": "123123",
-      "id": 1
-    },
-    {
-      "userName": "asdasd",
-      "email": "test@o2.pl",
-      "password": "aA123123!",
-      "id": 2
-    },
-    {
-      "userName": "bdsfds",
-      "email": "test@o2.pl",
-      "password": "aA123123!",
-      "id": 3
-    },
-    {
-      "userName": "test21",
-      "email": "test@o2.pl",
-      "password": "aA123123!",
-      "id": 4
-    },
-    {
-      "userName": "test2",
-      "email": "asd@o2.pl",
-      "password": "aA123123!",
-      "id": 5
-    }
-  ],
+  "users": [],
   "favourites": [
     {
       "name": "venusaur",

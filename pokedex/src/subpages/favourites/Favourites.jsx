@@ -1,4 +1,3 @@
-import React from "react";
 import { useGetData } from "../../hooks/useGetData";
 import { PokeCard } from "../../shared/PokeCard";
 import { Title } from "../../shared/Title";

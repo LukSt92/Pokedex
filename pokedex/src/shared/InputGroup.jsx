@@ -1,4 +1,3 @@
-import React from "react";
 import { capitalizeFirstLetter } from "../utilis/capitalizeFirstLetter";
 
 const inputClass =

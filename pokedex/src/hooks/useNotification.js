@@ -1,8 +1,6 @@
 import { useSnackbar } from "notistack";
 import { useState, useEffect } from "react";
 
-import React from "react";
-
 export const useNotification = () => {
   const [notification, setNotification] = useState({ message: "", type: "" });
   const { enqueueSnackbar } = useSnackbar();
