@@ -1,0 +1,117 @@
+{
+  "users": [],
+  "favourites": [
+    {
+      "name": "venusaur",
+      "id": 3
+    },
+    {
+      "name": "bulbasaur",
+      "id": 1
+    },
+    {
+      "name": "charmander",
+      "id": 4
+    },
+    {
+      "name": "squirtle",
+      "id": 7
+    },
+    {
+      "name": "metapod",
+      "id": 11
+    },
+    {
+      "name": "charizard",
+      "id": 6
+    }
+  ],
+  "arenaParticipants": [
+    {
+      "id": 3,
+      "name": "venusaur",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg",
+      "stats": {
+        "height": 20,
+        "base_experience": 343,
+        "weight": 1000,
+        "ability": "overgrow"
+      },
+      "wins": 8
+    }
+  ],
+  "pokemons": [
+    {
+      "id": 3,
+      "name": "venusaur",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg",
+      "stats": {
+        "height": 2023,
+        "base_experience": 343,
+        "weight": 1000,
+        "ability": "overgrow"
+      },
+      "wins": 8
+    },
+    {
+      "id": 4,
+      "name": "charmander",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/4.svg",
+      "stats": {
+        "height": 623,
+        "base_experience": 72,
+        "weight": 85,
+        "ability": "blaze"
+      },
+      "wins": 1,
+      "losses": 5
+    },
+    {
+      "id": 1,
+      "name": "bulbasaur",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg",
+      "stats": {
+        "height": 722,
+        "base_experience": 64232323,
+        "weight": 6923,
+        "ability": "overgrow"
+      }
+    },
+    {
+      "id": 8,
+      "name": "wartortle",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/8.svg",
+      "stats": {
+        "height": 10,
+        "base_experience": 152,
+        "weight": 225,
+        "ability": "torrent"
+      },
+      "wins": 1
+    },
+    {
+      "id": 11,
+      "name": "metapod",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/11.svg",
+      "stats": {
+        "height": 7,
+        "base_experience": 72,
+        "weight": 99,
+        "ability": "shed-skin"
+      },
+      "losses": 1
+    },
+    {
+      "id": 14,
+      "name": "kakuna",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/14.svg",
+      "stats": {
+        "height": 6,
+        "base_experience": 82,
+        "weight": 100,
+        "ability": "shed-skin"
+      },
+      "wins": 1
+    }
+  ]
+}
